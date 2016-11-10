@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Fridge and Recipes</string>
+    <string name="food_add">Add a food</string>
+    <string name="My_Frdige">My Fridge</string>
+    <string name="Recipes">Recipes</string>
+    <string name="return_to_fridge">Return to My Fridge</string>
+
+    <string-array name="NumberQuantity">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+
+</resources>
