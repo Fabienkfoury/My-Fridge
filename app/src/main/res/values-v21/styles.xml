@@ -8,6 +8,7 @@
     </style>
 
     <style name="MainTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:statusBarColor">?android:attr/colorForeground</item>
+        <item name="android:statusBarColor">@color/material_deep_teal_500</item>
+        <item name="android:navigationBarColor">@color/abc_search_url_text_normal</item>
     </style>
 </resources>

@@ -11,11 +11,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.shamanland.fab.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +33,18 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
 
     private EditText editText;
+    private GridView gridview;
+
+    private String[] FoodNames;
+    private int[] FoodQuantity;
+    private int [] ExpirationDate;
+    public static int[] FoodPhotos = {
+            R.drawable.cucumber,
+            R.drawable.tomate
+                     // Tableau d'aliments
+    };
+    private ArrayList<Food> Foods = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         myToolbar.setTitle("My Fridge");
         setSupportActionBar(myToolbar);
 
-        textView=(TextView)findViewById(R.id.textviewPut);
+        //textView =(TextView)findViewById(R.id.textviewPut);
         fab = (FloatingActionButton) findViewById(R.id.fab);
         //fab.setSize(FloatingActionButton.SIZE_NORMAL);
         //fab.setColor(Color.RED);
@@ -48,6 +62,14 @@ public class MainActivity extends AppCompatActivity {
         fab.initBackground();
         // NOTE standard method of ImageView
         //fab.setImageResource(R.drawable.ic_add_black_24dp);
+
+        gridview = (GridView)findViewById(R.id.gridViewLayout);
+        gridview.setAdapter(new ImageFoodAdapter(this));
+
+        FoodNames = getResources().getStringArray(R.array.FoodNames);
+        FoodQuantity = getResources().getIntArray(R.array.FoodQuantity);
+        ExpirationDate = getResources().getIntArray(R.array.ExpirationDate);
+        generateFoods();
 
        StringBuilder messageFromAddFood = new StringBuilder();
         Intent intent = getIntent();
@@ -71,6 +93,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.GoToRecipes:
                 startActivity(new Intent(this,Recipes.class));
                 break;
+        }
+    }
+
+    private void generateFoods()
+    {
+        for (int i = 0; i < FoodPhotos.length; i++) {
+            Foods.add(new Food(ExpirationDate[i],FoodNames[i], FoodQuantity[i],FoodPhotos[i] ) );
         }
     }
 

@@ -33,6 +33,20 @@
 
     </android.support.v7.widget.Toolbar>
 
+<GridView
+    android:id="@+id/gridViewLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnWidth="90dp"
+    android:layout_below="@+id/toolbar"
+    android:gravity="center"
+    android:horizontalSpacing="10dp"
+    android:numColumns="auto_fit"
+    android:stretchMode="columnWidth"
+    android:verticalSpacing="10dp">
+
+</GridView>
+
 
     <com.shamanland.fab.FloatingActionButton
         android:id="@+id/fab"
@@ -51,6 +65,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/gridViewLayout"
         android:id="@+id/textviewPut"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="182dp"
