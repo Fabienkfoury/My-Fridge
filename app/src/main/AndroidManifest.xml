@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.fabien.fridgeandrecipies">
 
+
+
+
     <application
         android:allowBackup="true"
         android:configChanges="orientation|keyboardHidden|screenSize"
@@ -11,7 +14,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/MainTheme"></activity>
+            android:theme="@style/MainTheme" />
         <activity android:name=".FirstLauncher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,10 +24,14 @@
         </activity>
         <activity
             android:name=".Recipes"
-            android:theme="@style/MainTheme"></activity>
+            android:theme="@style/MainTheme" />
         <activity
             android:name=".Add_Food"
-            android:theme="@style/MyDialog"></activity>
+            android:theme="@style/MyDialog" />
+
+        <activity android:name=".GridView"
+          >
+        </activity>
     </application>
 
 </manifest>

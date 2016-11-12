@@ -1,24 +1,17 @@
 package com.example.fabien.fridgeandrecipies;
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.shamanland.fab.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,21 +19,17 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_EDIT = 1234;
 
-    private int year;
-    private int month;
-    private int day;
-
     private TextView textView;
 
     private EditText editText;
-    private GridView gridview;
+     GridView gridview;
 
-    private String[] FoodNames;
-    private int[] FoodQuantity;
-    private int [] ExpirationDate;
+    public static String[] FoodNames;
+   public static String[] FoodQuantity;
+    public static String [] ExpirationDate;
     public static int[] FoodPhotos = {
             R.drawable.cucumber,
-            R.drawable.tomate
+            R.drawable.tomato
                      // Tableau d'aliments
     };
     private ArrayList<Food> Foods = new ArrayList<>();
@@ -62,26 +51,24 @@ public class MainActivity extends AppCompatActivity {
         fab.initBackground();
         // NOTE standard method of ImageView
         //fab.setImageResource(R.drawable.ic_add_black_24dp);
+        FoodNames = getResources().getStringArray(R.array.FoodNames);
+        FoodQuantity = getResources().getStringArray(R.array.FoodQuantity);
+        ExpirationDate = getResources().getStringArray(R.array.ExpirationDate);
 
         gridview = (GridView)findViewById(R.id.gridViewLayout);
-        gridview.setAdapter(new ImageFoodAdapter(this));
+        gridview.setAdapter(new ImageFoodAdapter(this,FoodPhotos,FoodNames,FoodQuantity,ExpirationDate));
 
-        FoodNames = getResources().getStringArray(R.array.FoodNames);
-        FoodQuantity = getResources().getIntArray(R.array.FoodQuantity);
-        ExpirationDate = getResources().getIntArray(R.array.ExpirationDate);
-        generateFoods();
+        //generateFoods();
 
-       StringBuilder messageFromAddFood = new StringBuilder();
+        StringBuilder messageFromAddFood = new StringBuilder();
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         messageFromAddFood.append("Quantity: " + intent.getStringExtra(Add_Food.KEY_QUANTITY) + System.getProperty("line.separator")); // String Extrat important
         //Car c'est un spinner et donc un string
         messageFromAddFood.append("Name: " + intent.getStringExtra(Add_Food.KEY_NAME) + System.getProperty("line.separator"));
-        messageFromAddFood.append("Year:" + intent.getIntExtra(Add_Food.KEY_YEAR,0)+System.getProperty("line.separator"));
-        messageFromAddFood.append("Month:" + intent.getIntExtra(Add_Food.KEY_MONTH,0)+System.getProperty("line.separator"));
-        messageFromAddFood.append("Day:" + intent.getIntExtra(Add_Food.KEY_DAY,0)+System.getProperty("line.separator"));
+        messageFromAddFood.append("Expiration Date :" + intent.getStringExtra(Add_Food.KEY_DATE)+System.getProperty("line.separator"));
 
-        textView.setText(messageFromAddFood);
+        //textView.setText(messageFromAddFood);
     }
 
     public void OnButtonClick(View v)
@@ -96,11 +83,36 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void generateFoods()
+//    private void generateFoods()
+//    {
+//        for (int i = 0; i < FoodPhotos.length; i++) {
+//            Foods.add(new Food(ExpirationDate[i],FoodNames[i], FoodQuantity[i],FoodPhotos[i] ) );
+//        }
+//    }
+    public void AddFood()
     {
-        for (int i = 0; i < FoodPhotos.length; i++) {
-            Foods.add(new Food(ExpirationDate[i],FoodNames[i], FoodQuantity[i],FoodPhotos[i] ) );
-        }
+        // Add/insert item to ArrayAdapter
+        // Insert at the end of ArrayAdapter
+        // ArrayAdapter is zero based index
+        Intent intent = getIntent();
+        String ExpirationDateData = intent.getStringExtra(Add_Food.KEY_DATE) ;
+        String FoodNamesData = intent.getStringExtra(Add_Food.KEY_NAME);
+        String FoodQuantityDate =intent.getStringExtra(Add_Food.KEY_QUANTITY);
+
+//        final List<String> NameList = new ArrayList<String>(Arrays.asList(plants));
+//        Foods.add(new Food (ExpirationDate,intent.getStringExtra(Add_Food.KEY_NAME),intent.getStringExtra(Add_Food.KEY_QUANTITY),));
+//
+//        // Update the GridView
+//        gridViewArrayAdapter.notifyDataSetChanged();
+//
+//        // Get the newly added item from ArrayAdapter
+//        String addedItemText = plantsList.get(plantsList.size()-1);
+//
+//        // Confirm the addition
+//        Toast.makeText(getApplicationContext(),
+//                "Item added : " + addedItemText, Toast.LENGTH_SHORT).show();
+
     }
+
 
 }

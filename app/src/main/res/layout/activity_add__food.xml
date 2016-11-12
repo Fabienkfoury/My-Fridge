@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_add__food"
     android:layout_width="match_parent"
@@ -8,8 +8,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     tools:context="com.example.fabien.fridgeandrecipies.Add_Food">
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -34,12 +39,12 @@
                 android:layout_marginLeft="19dp"
                 android:id="@+id/textView" />
 
-            <EditText
-                android:id="@+id/inputName"
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="19dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginEnd="20dp"
                 android:ems="10"
                 android:inputType="text"
                 android:hint="Tomato"/>
@@ -94,9 +99,11 @@
             android:layout_width="wrap_content" />
 
     <Button
+        android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Add"
         android:onClick="onAddClick"/>
 </LinearLayout>
+</ScrollView>

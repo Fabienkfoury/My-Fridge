@@ -23,20 +23,12 @@
         <item>Cucomber</item>
         <item>Picles</item>
 
-
     </string-array>
 
     <string-array name="FoodQuantity">
         <item>1</item>
         <item>2</item>
         <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
 
     </string-array>
 
@@ -45,8 +37,6 @@
         <item>14/10/2016</item>
         <item>13/10/2016</item>
 
-
     </string-array>
-
 
 </resources>
